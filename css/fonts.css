@@ -1,0 +1,32 @@
+@font-face {
+    font-family: '20_dbregular';
+    src: url('20db-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'acmeregular';
+    src: url('Acme-Regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'balooregular';
+    src: url('Baloo-Regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+p {
+    font-family: "acmeregular";
+}
+
+h1 {
+    font-family: "balooregular";
+}
+
+h4 { 
+    font-family: "20_dbregular"; 
+}

@@ -1,0 +1,326 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <!--
+        Customize the content security policy in the meta tag below as needed. Add 'unsafe-inline' to default-src to enable inline JavaScript.
+        For details, see http://go.microsoft.com/fwlink/?LinkID=617521
+    -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="css/mytheme.min.css" />
+    <link rel="stylesheet" href="css/fonts.css" />
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <title>CBDb</title>
+</head>
+<body>
+    <!-- We use the HTML5-compliant <section> Tag
+        (which is "upgraded" by jQM) to create
+        different screens for our SPA (Single Page App)
+        data-role="page" activates the jQM code (html/css/js)
+        to create a basic full screen interface
+    -->
+    <section data-role="page" id="pgWelcome">
+        <!-- START pgWelcome Screen -->
+        <header data-role="header" data-position="fixed">
+            <h1>CBDb</h1>
+        </header>
+        <article role="main" class="ui-content">
+            <p style="width: 100%; text-align: center;"><img src="images/Unbeatable_Squirrel_Girl_Vol_2_7_Classic_Variant_Textless.jpg" style="width: 75%; border-radius: 25px;"></p>
+            <a href="#pgLogIn" data-role="button" data-transition="flip" data-icon="arrow-r" data-iconpos="right">Log In</a>
+            <a href="#pgSignUp" data-role="button" data-transition="slideup" data-icon="user">Sign Up</a>
+        </article>
+    </section><!-- END pgWelcome Section -->
+
+    <section data-role="page" id="pgSignUp">
+        <!-- START pgSignUp Screen -->
+        <header data-role="header" data-position="fixed" data-add-back-btn="true">
+            <h1>Sign Up</h1>
+        </header>
+        <article role="main" class="ui-content">
+            <!-- Input Form to collect user account info
+                Add id Attribute so that JS can find this form and capture the data
+                <input> HTML Tag for boxes for the User to input their data
+                Most <input> fields have a variety of Attributes & don't have a pair
+                This Form will then "work" with JavaScript... COMING SOON
+                Every <input> Tag should have a <label> Tag associated with it.
+                This is for Accessibility.
+            -->
+            <form id="formSignUp">
+                <label for="inEmailSignUp"><strong>Email:</strong></label> 						<input type="email" placeholder="peter@parker.biz" required name="inEmailSignUp" id="inEmailSignUp">
+                <label for="inPasswordSignUp"><strong>Password:</strong><br>(Mixed capitalization on least 7 characters, letters, numbers & symbols):</label> 				<input type="password" placeholder="SpiderMAN1962!" required name="inPasswordSignUp" id="inPasswordSignUp">
+                <label for="inPasswordConfirmSignUp"><strong>Confirm Password:</strong></label> 	<input type="password" placeholder="SpiderMAN1962!" required name="inPasswordConfirmSignUp" id="inPasswordConfirmSignUp">
+                <div class="ui-grid-a">
+                    <div class="ui-block-a"><input type="reset" value="Clear" data-icon="delete"></div>
+                    <div class="ui-block-b"><input type="submit" value="Go!" data-icon="check"></div>
+                </div>
+            </form>
+            <!-- jQM style pop up messages
+                They are set up in the Article of the Section they will be used in
+                They will be called (used) by JavaScript
+                They use the <div> HTML tag as a generic container
+            -->
+            <div data-role="popup" class="ui-content" id="popErrorSignUpMismatch">Passwords don't match!</div>
+            <div data-role="popup" class="ui-content" id="popErrorSignUpExists">Account already exists!</div>
+            <div data-role="popup" class="ui-content" id="popErrorSignUpWeak">Password must have letters, numbers, and symbols, and be at least 7 characters long!</div>
+            <!-- jQM pop up for successful sign up.
+                It's a little more complex, note the differences
+            -->
+            <div data-role="popup" data-dialog="true" data-dismissible="false" id="popSuccessSignUpWelcome">
+                <header data-role="header">
+                    <h1>Welcome!</h1>
+                </header>
+                <article role="main" class="ui-content">
+                    <p>
+                        Thank you for registering. Ready!<br>
+                        <a href="#pgLogIn" data-role="button" data-transition="flip">Log In</a>
+                    </p>
+                </article>
+            </div>
+        </article>
+    </section><!-- END pgSignUp Section -->
+
+    <section data-role="page" id="pgLogIn">
+        <!-- START pgLogIn Screen -->
+        <header data-role="header" data-position="fixed" data-add-back-btn="true">
+            <h1>Log In</h1>
+        </header>
+        <article role="main" class="ui-content">
+            <!-- <a href="#pgHome">Go Home</a> -->
+            <form id="formLogIn">
+                <label for="inEmailLogIn"><strong>Email:</strong></label> 		<input type="email" placeholder="peter@parker.biz" required name="inEmailLogIn" id="inEmailLogIn">
+                <label for="inPasswordLogIn"><strong>Password:</strong></label>	<input type="password" placeholder="SpiderMAN1962" required name="inPasswordLogIn" id="inPasswordLogIn">
+                <div class="ui-grid-a">
+                    <div class="ui-block-a"><input type="reset" value="Clear" data-icon="delete"></div>
+                    <div class="ui-block-b"><input type="submit" value="Go!" data-iconpos="right" data-icon="arrow-r"></div>
+                </div>
+            </form>
+            <div data-role="popup" class="ui-content" id="popErrorLogInNotExists">Account Doesn't Exist!</div>
+            <div data-role="popup" class="ui-content" id="popErrorLogInWrongPassword">Wrong Password!</div>
+            <div data-role="popup" class="ui-content" id="popErrorLogInTooMany">Too Man Wrong Passwords!</div>
+        </article>
+    </section><!-- END pgLogIn Section -->
+
+    <section data-role="page" id="pgHome">
+        <!-- <header> with the right Attribute creates a top area
+            that is fixed into place. Same for <footer>
+        -->
+        <header data-role="header" data-position="fixed">
+            <h1>CBDb</h1>
+            <a href="#pgOptions" data-transition="pop" data-icon="gear" data-iconpos="notext" class="ui-btn-right">Options</a>
+            <!-- Add a <nav> Tag plus Attributes and a list of links to for a NavBar -->
+            <nav data-role="navbar">
+                <!-- <ul> Tag is an Unordered List of bullet points -->
+                <ul>
+                    <li><a href="#pgHome" data-icon="home" data-transition="flip" class="ui-btn-active ui-state-persist">Home</a></li>
+                    <li><a href="#pgSaveComic" data-icon="edit" data-transition="flip">Save Comic</a></li>
+                    <li><a href="#pgViewComics" data-icon="eye" data-transition="flip">View Comics</a></li>
+                </ul>
+            </nav>
+        </header>
+        <!-- <article> for content between <header> & <footer>
+            Note: no data-role, instead role & class Attributes
+        -->
+        <article role="main" class="ui-content">
+            <p>
+                The Comic Book DataBase lets you store your whole collection! Save title, year, publisher information and much more. Multiple users can have their very own collections.
+            </p>
+            <p>
+                <img src="images/Spider-Gwen-25-6110285-25.jpg" style="width: 100%;">
+            </p>
+        </article>
+        <footer data-role="footer" data-position="fixed">
+            <!--
+                An ID Attribute should only be used once per document
+                A Class Attribute may be used multiple times per document
+                Either can be used via JS to identify/read/edit HTML content
+            -->
+            <h4 class="userEmail">Copyright &copy; 2019</h4>
+        </footer>
+    </section>
+
+    <section data-role="page" data-theme="b" id="pgSaveComic">
+        <!-- <header> with the right Attribute creates a top area
+            that is fixed into place. Same for <footer>
+        -->
+        <header data-role="header" data-position="fixed">
+            <h1>Save Comic</h1>
+            <a href="#pgOptions" data-transition="pop" data-icon="gear" data-iconpos="notext" class="ui-btn-right">Options</a>
+            <!-- Add a <nav> Tag plus Attributes and a list of links to for a NavBar -->
+            <nav data-role="navbar">
+                <!-- <ul> Tag is an Unordered List of bullet points -->
+                <ul>
+                    <li><a href="#pgHome" data-icon="home" data-transition="flip">Home</a></li>
+                    <li><a href="#pgSaveComic" data-icon="edit" data-transition="flip" class="ui-btn-active ui-state-persist">Save Comic</a></li>
+                    <li><a href="#pgViewComics" data-icon="eye" data-transition="flip">View Comics</a></li>
+                </ul>
+            </nav>
+        </header>
+        <article role="main" class="ui-content">
+            <!-- Input Form to capture Comic data -->
+            <form id="formSaveComic">
+                <!-- fieldset groups together related Inputs -->
+                <fieldset>
+                    <legend>Required</legend>
+                    <label for="inTitle">Title:</label>
+                    <input type="text" placeholder="Batman" required name="inTitle" id="inTitle" />
+                    <label for="inNumber">Number:</label>
+                    <input type="number" placeholder="1" required name="inNumber" id="inNumber" />
+                    <label for="inYear">Year:</label>
+                    <input type="number" placeholder="1940" required name="inYear" id="inYear" />
+                </fieldset>
+                <fieldset>
+                    <legend>Optional</legend>
+                    <label for="inPublisher">Publisher:</label>
+                    <input type="text" placeholder="DC Comics" name="inPublisher" id="inPublisher" />
+                    <label for="inNotes">Notes:</label>
+                    <textarea placeholder="First self-named issue." name="inNotes" id="inNotes"></textarea>
+                    <hr />
+                    <!-- Set up Input to store the Barcode data, and a button to scan Barcode -->
+                    <input type="number" placeholder="783731" id="inBarcode" />
+                    <input type="button" value="Scan Barcode" id="btnScanBarcode" />
+                    <!-- Set up Input to store path to Photo, and button to take Photo
+                        Note: on Photo Path field: disabled Attr so user doesn't it
+                                and hidden attribute so it doesn't appear to the user
+                    -->
+                    <hr />
+                    <input type="text" hidden disabled style="display: none;" id="inPhoto" />
+                    <input type="button" value="Snap a pic" id="btnTakePhoto" />
+                </fieldset>
+                <!-- Using jQM, create a simple 2-column grid -->
+                <div class="ui-grid-a">
+                    <div class="ui-block-a"><input type="reset" value="Clear" data-icon="delete" /></div>
+                    <div class="ui-block-b"><input type="submit" value="Save" data-icon="check" /></div>
+                </div>
+            </form>
+            <!-- jQM-based pop to give feedback after saving Comic -->
+            <div data-role="popup" class="ui-content" id="popComicSaved">Comic saved!</div>
+        </article>
+        <footer data-role="footer" data-position="fixed">
+            <h4 class="userEmail">Copyright &copy; 2019</h4>
+        </footer>
+    </section>
+
+    <section data-role="page" data-theme="c" id="pgViewComics">
+        <!-- <header> with the right Attribute creates a top area
+            that is fixed into place. Same for <footer>
+        -->
+        <header data-role="header" data-position="fixed">
+            <h1>View Comics</h1>
+            <a href="#pgOptions" data-transition="pop" data-icon="gear" data-iconpos="notext" class="ui-btn-right">Options</a>
+            <!-- Add a <nav> Tag plus Attributes and a list of links to for a NavBar -->
+            <nav data-role="navbar">
+                <!-- <ul> Tag is an Unordered List of bullet points -->
+                <ul>
+                    <li><a href="#pgHome" data-icon="home" data-transition="flip">Home</a></li>
+                    <li><a href="#pgSaveComic" data-icon="edit" data-transition="flip">Save Comic</a></li>
+                    <li><a href="#pgViewComics" data-icon="eye" data-transition="flip" class="ui-btn-active ui-state-persist">View Comics</a></li>
+                </ul>
+            </nav>
+        </header>
+        <article role="main" class="ui-content">
+            <div id="divShowComicsTable">PLACEHOLDER</div>
+        </article>
+        <footer data-role="footer" data-position="fixed">
+            <h4 class="userEmail">Copyright &copy; 2019</h4>
+        </footer>
+    </section>
+    
+    <!-- START pgOptions -->
+    <section data-role="page" data-dialog="true" id="pgOptions">
+        <header data-role="header">
+            <h1>Options</h1>
+        </header>
+        <article role="main" class="ui-content">
+            <h2>About</h2>
+            <p>CBDb is an Open Source project designed by Victor Campos. The source code is free for non-commericial use. For commericial use, please enquire about licensing: victor@pmdinteractive.com</p>
+            <p><img src="images/1811820-spider_man_2099__1992_.jpeg" style="width: 100%; box-shadow: 5px 5px 5px gray;"></p>
+            <!--
+                This button is more complex than just "click to go."
+                We have a link to "nowhere"  (#)  (dummy link/empty link)
+                We'll use JS to log out current user; unload their data from memory;
+                prep for a new user and their data.
+            -->
+            <a href="#" data-role="button" data-icon="power" id="btnLogOut">Log Out</a>
+            <a href="#" data-role="button" data-icon="delete" id="btnDeleteCollection">Delete Collection</a>
+            <a href="#" data-role="button" data-icon="mail" id="btnEmail">Contact Developer</a>
+            <a href="#" data-role="button" data-icon="action" id="btnShare">Share the app</a>
+        </article>
+    </section> <!-- END pgOptions -->
+    <!-- START popViewComicsInfo -->
+    <section data-role="page" id="popViewComicsInfo">
+        <header data-role="header">
+            <h1>Comic Info</h1>
+        </header>
+        <article role="main" class="ui-content">
+            <div id="divViewComicsInfo">
+                <p>Title: </p>
+                <p>Number: </p>
+                <p>Year: </p>
+                <p>Publisher: </p>
+                <p>Notes: </p>
+                <p>Barcode: </p>
+                <p><img src="" class="imgComic" /></p>
+                <p><button id="btnDeleteComic">Delete</button></p>
+                <p><button id="btnEditComic">Edit</button></p>
+            </div>
+        </article>
+    </section> <!-- END popViewComicsInfo -->
+    <!-- START popEditComicsInfo -->
+    <section data-role="page" id="popEditComicsInfo">
+        <header data-role="header">
+            <h1>Edit Comic</h1>
+        </header>
+        <article role="main" class="ui-content">
+            <form id="formEditComicsInfo">
+                <label for="inTitleEdit">Title: </label>
+                <input type="text" placeholder="Comic Name" name="inTitleEdit" id="inTitleEdit" />
+                <label for="inNumberEdit">Number:</label>
+                <input type="number" placeholder="0" name="inNumberEdit" id="inNumberEdit" />
+                <label for="inYearEdit">Year:</label>
+                <input type="number" placeholder="1900" name="inYearEdit" id="inYearEdit" />
+                <label for="inPublisherEdit">Publisher: </label>
+                <input type="text" placeholder="Atlas" name="inPublisherEdit" id="inPublisherEdit" />
+                <label for="inNotesEdit">Notes: </label>
+                <textarea placeholder="Some info" name="inNotesEdit" id="inNotesEdit"></textarea>
+                <label for="inBarcodeEdit">Barcode: </label>
+                <input type="number" placeholder="7838010101" name="inBarcodeEdit" id="inBarcodeEdit" />
+                <input type="button" value="Cancel" id="btnEditComicsCancel" />
+                <input type="submit" value="Update" />
+            </form>
+        </article>
+    </section> <!-- END popEditComicsInfo -->
+    <!-- START TEMPLATE -->
+    <section data-role="page" id="TEMPLATE">
+        <!-- START TEMPLATE -->
+        <header data-role="header">
+            <h1>header</h1>
+        </header>
+        <article role="main" class="ui-content">
+            <h2>xxxx</h2>
+        </article>
+        <footer data-role="footer">
+            <h4>footer</h4>
+        </footer>
+    </section> <!-- END TEMPLATE -->
+    <!-- Access the jQuery and jQuery Mobile JS Library -->
+    <script src="scripts/jquery-2.1.0.min.js"></script>
+    <script src="scripts/jquery.mobile-1.4.5.min.js"></script>
+    <!-- PouchDB library to use advanced Databases -->
+    <script src="scripts/pouchdb-7.0.0.min.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="scripts/platformOverrides.js"></script>
+    <script type="text/javascript" src="scripts/index.js"></script>
+</body>
+<!--
+    Name:       Victor Campos <vcampos@sdccd.edu>
+    Project:    CBDb (The Comic Book Database App)
+    Date:       2019-01-31
+    Version:    1.0
+    Desc:       An app to keep track of a comic book collection. Multi-user support.
+-->
+</html>

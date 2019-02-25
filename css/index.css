@@ -1,0 +1,97 @@
+* {
+    /* "Hide" web-focused features */
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+body {
+    /* "Hide" web-focused features and improve compatibility */
+    -webkit-touch-callout: none;
+    -webkit-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+	
+    /* Basic gray color behind everything */
+    background-color:#32383d;
+    /* Commonly-found mobile fonts */
+    font-family: 'RobotoRegular', 'Droid Sans', 'Segoe UI', Segoe, 'San Francisco', 'Helvetica Neue', Helvetica, Arial, Geneva, sans-serif;
+    /* Set the base font size to 1-1/4x bigger than a "normal" of 1em */
+    font-size: 1.25em;
+}
+
+/* Media Query to detect if app is Landscape */
+@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
+    
+}
+
+/* A Selector to affect all instances of an <img> with this Class */
+.imgComic {
+    /* Absolute values can be limiting. May be too big/small on devices 
+    width: 100px;*/
+    /* Relative values could work better because they scale */
+    width: 100%;
+    /* CSS Property to give rounded edges to the image 
+        One value applies to all four corner; four values applies to each corner
+    */
+    border-radius: 25px 5px 55px 0;
+    /* CSS Property to give a drop shadow */
+    box-shadow: brown 10px 10px 5px;
+}
+
+/* CSS Selector to target the <table> with our comics,
+    which is inside of a parent <div>
+    We added a Background Color; a Width (relative values);
+    auto Margin to center the table; simple border; 
+    removed the jQm Drop Shadow; and Word Wrap
+*/
+div#divShowComicsTable table {
+    background-color: aliceblue;
+    width: 75%;
+    margin: auto;
+    border: 5px solid black;
+    text-shadow: none;
+    word-wrap: break-word;
+}
+
+/* Style the Headers of the Table */
+div#divShowComicsTable table th {
+    background-color: rebeccapurple;
+    color: aquamarine;
+}
+
+/* Style the even Rows of the Table */
+div#divShowComicsTable table tr:nth-of-type(even) {
+    background-color: rgb(0, 50, 200);
+    color: ghostwhite;
+}
+
+/* Style the odd Rows of the Table */
+div#divShowComicsTable table tr:nth-of-type(odd) {
+    background-color: rgba(0, 50, 200, 0.5);
+    color: ghostwhite;
+}
+
+/* Style the icon in the Details box */
+div#divShowComicsTable table td.btnShowComicsInfo {
+    font-size: 125%;
+    text-align: center;
+}
+
+/* Fix the transparent pop screen bug */
+.ui-dialog-contain > .ui-content {
+    background-color: gold;
+}
+
+.ui-footer .ui-title {
+    font-size: 0.5em;
+}
+
+/*
+    Name:       Victor Campos <vcampos@sdccd.edu>
+    Project:    CBDb (The Comic Book Database App)
+    Date:       2019-01-31
+    Version:    1.0
+    Desc:       An app to keep track of a comic book collection. Multi-user support.
+*/
